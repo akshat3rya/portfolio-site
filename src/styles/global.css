@@ -194,13 +194,13 @@ nav a.active {
 }
 .hero p {
     margin-top: 28px;
-    max-width: 620px;
+    max-width: 800px;
     color: var(--muted);
     font-size: 1.1rem;
 }
 .hero-description {
     margin-top: 30px;
-    max-width: 620px;
+    max-width: 800px;
     color: var(--muted);
     font-size: 1.15rem;
 }
@@ -251,7 +251,7 @@ nav a.active {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    max-width: 650px;
+    max-width: 800px;
 }
 .currently p {
     color: var(--muted);
@@ -291,7 +291,7 @@ nav a.active {
 }
 .project-card p {
     color: var(--muted);
-    max-width: 520px;
+    max-width: none;
 }
 .project-card span {
     color: var(--muted);

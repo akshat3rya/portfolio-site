@@ -8,14 +8,14 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <p className="hero-tag">Software Engineer · AI · Builder</p>
+        <p className="hero-tag">Systems Programmer · Distributed Systems · Builder</p>
         <h1>
           Building thoughtful software,
-          creating useful AI tools,
-          and writing along the way.
+          creating low-level tools,
+          and engineering systems along the way.
         </h1>
         <p className="hero-description">
-          Hi, I'm Your Name. I enjoy building products that are simple, reliable, and a pleasure to use.
+          Hi, I'm Akshat Arya. I enjoy building systems that are fast, reliable, and run with low overhead.
         </p>
       </section>
 
@@ -42,9 +42,9 @@ export default function Home() {
           <h2>Currently</h2>
         </div>
         <div className="currently">
-          <p>Building a AI-powered workflow assistant for developers.</p>
-          <p>Reading <em>Designing Data-Intensive Applications</em>.</p>
-          <p>Exploring agentic systems and local LLMs.</p>
+          <p>Completing my B.E. in Electronics and Tele-Communication Engineering at Jadavpur University.</p>
+          <p>Exploring custom peer-to-peer transport protocols and low-level computer hardware emulation.</p>
+          <p>Developing robust, content-addressable storage mechanisms and version control internals.</p>
         </div>
       </section>
 
@@ -53,13 +53,13 @@ export default function Home() {
           <h2>Get in Touch</h2>
         </div>
         <div className="contact-content">
-          <p>If you enjoy building thoughtful software, working with AI, or just want to chat, I'd love to hear from you.</p>
+          <p>If you enjoy building systems software, working with networks, or just want to chat, I'd love to hear from you.</p>
           <div className="contact-links">
-            <a href="mailto:hello@yourmail.com">Email</a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="mailto:akshat3rya@gmail.com">Email</a>
+            <a href="https://github.com/akshat3rya" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/akshat3rya" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
-          <p className="copyright">© 2026 Your Name</p>
+          <p className="copyright">© 2026 Akshat Arya</p>
         </div>
       </section>
     </>
