@@ -24,7 +24,7 @@ export default function Articles() {
       {articles.map(article => (
         <ArticleCard
           key={article.slug}
-          article={article}
+          article={article}bordered
         />
       ))}
 

@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 
-export default function ArticleCard({ article }) {
+export default function ArticleCard({
+  article,
+  bordered = false,
+}) {
   return (
     <Link
       to={`/articles/${article.slug}`}
-      className="article-card"
+      className={`article-card ${bordered ? "bordered-card" : ""}`}
     >
       <div>
         <h3>{article.title}</h3>
@@ -12,7 +15,7 @@ export default function ArticleCard({ article }) {
         <p>{article.description}</p>
       </div>
 
-      <span>{article.date}</span>
+      {/* <span>{article.date}</span> */}
     </Link>
   );
 }

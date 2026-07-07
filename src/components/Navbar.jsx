@@ -6,7 +6,6 @@ import {
   User,
 } from "lucide-react";
 import { useState } from "react";
-
 export default function Navbar() {
   const links = [
     {
@@ -30,14 +29,10 @@ export default function Navbar() {
       icon: <User size={20} />,
     },
   ];
-
   return (
     <>
       {/* Desktop Sidebar */}
-
       <aside className="sidebar">
-        
-
         <nav>
           {links.map((link) => (
             <NavLink
@@ -51,11 +46,7 @@ export default function Navbar() {
           ))}
         </nav>
       </aside>
-
       {/* Mobile */}
-
-
-
     </>
   );
 }
