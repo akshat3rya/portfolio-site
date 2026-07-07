@@ -33,7 +33,7 @@ const projectDetails = [
   },
   {
     slug: "vnes",
-    title: "VNES Emulator",
+    title: "vNES Emulator",
     year: "2026",
     subtitle: "A modular, cross-platform hardware emulator reproducing the internal mechanics of the Nintendo Entertainment System console.",
     tech: ["C++17", "OpenGL", "PixelGameEngine", "ALSA", "X11"],

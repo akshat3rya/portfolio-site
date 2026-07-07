@@ -8,7 +8,7 @@ const projects = [
   },
   {
     slug: "vnes",
-    title: "VNES Emulator",
+    title: "vNES Emulator",
     year: "2026",
     description:
       "A cross-platform Nintendo Entertainment System emulator written in C++17, featuring dynamic hardware mapping and a cycle-accurate 6502 CPU pipeline.",
