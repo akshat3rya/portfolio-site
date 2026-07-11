@@ -1,5 +1,6 @@
 import articles from "../data/articles";
 import ArticleCard from "../components/ArticleCard";
+import Reveal from "../components/Reveal";
 
 export default function Articles() {
   return (
@@ -21,11 +22,10 @@ export default function Articles() {
 
       </div>
 
-      {articles.map(article => (
-        <ArticleCard
-          key={article.slug}
-          article={article}bordered
-        />
+      {articles.map((article, i) => (
+        <Reveal key={article.slug} delay={i * 0.04}>
+          <ArticleCard article={article} index={i} bordered />
+        </Reveal>
       ))}
 
     </section>

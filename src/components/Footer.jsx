@@ -1,27 +1,16 @@
 export default function Footer() {
   return (
-    <footer className="footer">
-
-      <div className="section-header">
-        <h2>Get in touch</h2>
+    <footer className="site-footer">
+      <div className="site-footer-row">
+        <span>Akshat Arya &mdash; building fast, low-overhead systems.</span>
+        <span>&copy; 2026, built with React.</span>
       </div>
 
-      <p>
-        If you enjoy building thoughtful software,
-        working with AI, or just want to chat,
-        I'd love to hear from you.
-      </p>
-
-      <div className="footer-links">
-        <a href="mailto:hello@yourmail.com">Email</a>
-        <a href="https://github.com/yourusername">GitHub</a>
-        <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
+      <div className="site-footer-links">
+        <a href="mailto:akshat3rya@gmail.com">email</a>
+        <a href="https://github.com/akshat3rya" target="_blank" rel="noreferrer">github</a>
+        <a href="https://linkedin.com/in/akshat3rya" target="_blank" rel="noreferrer">linkedin</a>
       </div>
-
-      <p className="footer-copy">
-        © 2026 Your Name
-      </p>
-
     </footer>
   );
 }

@@ -1,5 +1,6 @@
 import projects from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
+import Reveal from "../components/Reveal";
 
 export default function Projects() {
   return (
@@ -18,8 +19,10 @@ export default function Projects() {
       </div>
 
       <div className="project-list">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} bordered/>
+        {projects.map((project, i) => (
+          <Reveal key={project.slug} delay={i * 0.04}>
+            <ProjectCard project={project} index={i} bordered />
+          </Reveal>
         ))}
       </div>
     </section>

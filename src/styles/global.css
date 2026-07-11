@@ -33,10 +33,12 @@ a {
    2. THEME CONFIGURATION & TRANSITIONS
    ========================================================================== */
 :root {
-    --bg: #fff8f0;
+    --bg: #fffbf2;
     --text: #2B2B2B;
     --muted: #736D65;
     --border: #DDD4C7;
+    --accent: #ffaa64;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", "Consolas", monospace;
     transition: background .25s, color .25s;
 }
 * {
@@ -47,19 +49,22 @@ html[data-theme="dark"] {
     --text: #F4F4F4;
     --muted: #A5A5A5;
     --border: #323232;
+    --accent: #E8A15D;
 }
 html[data-theme="light"] {
-    --bg: #f0f0f0;
+    --bg: #f2f2f2;
     --text: #1F1F1F;
     --muted: #7A7A7A;
     --border: #E7E7E7;
+    --accent: #db516f;
+}
+body {
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 28px 28px;
 }
 .theme-switcher {
-    position: absolute;
-    top: 32px;
-    right: 48px;
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     border: 1px solid var(--border);
     background: var(--bg);
@@ -69,10 +74,12 @@ html[data-theme="light"] {
     align-items: center;
     cursor: pointer;
     transition: .25s;
-    z-index: 500;
+    flex-shrink: 0;
 }
 .theme-switcher:hover {
     transform: translateY(-2px);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 /* ==========================================================================
@@ -87,12 +94,71 @@ html[data-theme="light"] {
 .content {
     position: relative;
     margin-left: 72px;
-    padding: 60px 48px 80px;
+    padding: 100px 48px 80px;
     width: calc(100% - 72px);
 }
 .container {
     width: min(900px, 90%);
     margin: auto;
+}
+
+/* ==========================================================================
+   3b. TOP BAR (CORRESPONDENCE)
+   ========================================================================== */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 28px 0 96px;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 600;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+}
+.top-bar-mark {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: .05em;
+    color: var(--text);
+    flex-shrink: 0;
+}
+.top-bar-clock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+    flex-shrink: 0;
+}
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+.top-bar-contact {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+.top-bar-contact:hover {
+    color: var(--accent);
 }
 
 /* ==========================================================================
@@ -170,7 +236,7 @@ nav a.active {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: var(--text);
+    background: var(--accent);
 }
 
 /* ==========================================================================
@@ -180,10 +246,14 @@ nav a.active {
     padding: 120px 0 90px;
 }
 .hero-tag {
-    color: var(--muted);
+    color: var(--accent);
     margin-bottom: 18px;
-    font-size: .95rem;
+    font-size: .8rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: .1em;
 }
+
 .hero h1 {
     font-family: "Instrument Serif", serif;
     font-size: clamp(3rem, 7vw, 5.5rem);
@@ -203,6 +273,9 @@ nav a.active {
     max-width: 800px;
     color: var(--muted);
     font-size: 1.15rem;
+}
+.home-dashboard {
+    counter-reset: home-sec-num;
 }
 .home-section {
     margin-top: 40px;
@@ -238,6 +311,16 @@ nav a.active {
         /* border-bottom: 1px solid var(--border); */
 
 }
+.section-header h2::before {
+    counter-increment: home-sec-num;
+    content: "§ " counter(home-sec-num, decimal-leading-zero) " — ";
+    font-family: var(--font-mono);
+    font-size: .58em;
+    color: var(--accent);
+    letter-spacing: .04em;
+    margin-right: 2px;
+    vertical-align: middle;
+}
 .section-header a {
     font-size: .95rem;
     color: var(--muted);
@@ -264,13 +347,41 @@ nav a.active {
     left: 0;
     color: var(--text);
 }
+.status-panel {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 800px;
+}
+.status-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+}
+.status-row:last-child {
+    border-bottom: none;
+}
+.status-label {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: .72rem;
+    letter-spacing: .1em;
+    color: var(--accent);
+    padding-top: 3px;
+}
+.status-value {
+    color: var(--muted);
+}
 
 /* ==========================================================================
    6. CARDS (PROJECTS & ARTICLES)
    ========================================================================== */
 .project-card {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
     padding: 20px 0;
@@ -296,9 +407,47 @@ nav a.active {
 .project-card span {
     color: var(--muted);
 }
+.card-index {
+    font-family: var(--font-mono);
+    font-size: .85rem;
+    color: var(--muted);
+    padding-top: 6px;
+    width: 26px;
+    flex-shrink: 0;
+    transition: .25s;
+}
+.card-body {
+    flex: 1;
+    min-width: 0;
+}
+.card-date {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    color: var(--muted);
+}
+.card-arrow {
+    flex-shrink: 0;
+    margin-top: 8px;
+    color: var(--muted);
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: .25s;
+}
+.project-card:hover .card-arrow,
+.article-card:hover .card-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+    color: var(--accent);
+}
+.project-card:hover .card-index,
+.article-card:hover .card-index {
+    color: var(--accent);
+}
 .article-card {
     display: flex;
-    justify-content: space-between;
+    align-items: flex-start;
     padding: 22px 0;
     /* border-top: 1px solid var(--border); */
     transition: .25s;
@@ -356,6 +505,7 @@ nav a.active {
     max-width: 900px;
     margin: auto;
     padding: 40px 0 120px;
+    counter-reset: case-sec-num;
 }
 .project-hero {
     margin-bottom: 20px;
@@ -411,6 +561,16 @@ nav a.active {
     font-weight: 400;
     margin-bottom: 12px;
 }
+.case-section h2::before {
+    counter-increment: case-sec-num;
+    content: "§ " counter(case-sec-num, decimal-leading-zero) " — ";
+    font-family: var(--font-mono);
+    font-size: .45em;
+    color: var(--accent);
+    letter-spacing: .04em;
+    margin-right: 2px;
+    vertical-align: middle;
+}
 .case-content {
     color: var(--muted);
     line-height: 1.9;
@@ -449,6 +609,7 @@ nav a.active {
     max-width: 760px;
     margin: 0;
     padding: 40px 0 100px;
+    counter-reset: case-sec-num;
 }
 .about-page .project-hero {
     margin-bottom: 70px;
@@ -541,6 +702,34 @@ nav a.active {
     border-top: 1px solid var(--border);
     max-width: 650px;
 }
+.site-footer {
+    margin-top: 100px;
+    padding: 26px 0 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    color: var(--muted);
+}
+.site-footer-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.site-footer-links {
+    display: flex;
+    gap: 22px;
+    padding-bottom: 26px;
+}
+.site-footer-links a {
+    color: var(--muted);
+}
+.site-footer-links a:hover {
+    color: var(--accent);
+}
 .not-found {
     min-height: 75vh;
     display: flex;
@@ -588,7 +777,7 @@ nav a.active {
 
         width:100%;
 
-        padding:24px 22px 100px;
+        padding:88px 22px 100px;
     }
 
     .container{
@@ -596,15 +785,39 @@ nav a.active {
         width:100%;
     }
 
+    /* Top bar */
+
+    .top-bar{
+        padding:0 16px;
+        gap:10px;
+    }
+
+    .top-bar-clock{
+        display:none;
+    }
+
+    .top-bar-contact span{
+        display:none;
+    }
+
+    /* Status panel */
+
+    .status-row{
+        grid-template-columns:1fr;
+        gap:6px;
+    }
+
+    .site-footer-row{
+        flex-direction:column;
+        gap:4px;
+    }
+
     /* Theme button */
 
     .theme-switcher{
 
-        top:18px;
-        right:18px;
-
-        width:38px;
-        height:38px;
+        width:36px;
+        height:36px;
     }
 
     /* Hide desktop sidebar */

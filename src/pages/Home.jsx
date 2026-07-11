@@ -1,12 +1,12 @@
 import ProjectCard from "../components/ProjectCard";
 import ArticleCard from "../components/ArticleCard";
-import Footer from "../components/Footer";
+import Reveal from "../components/Reveal";
 import projects from "../data/projects";
 import articles from "../data/articles";
 
 export default function Home() {
   return (
-    <>
+    <div className="home-dashboard">
       <section className="hero">
         <p className="hero-tag">Operating Systems · Emulations · Concurrency</p>
         <h1>
@@ -17,36 +17,45 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="home-section">
+      <Reveal className="home-section">
         <div className="section-header">
           <h2>Selected Projects</h2>
         </div>
-        {projects.slice(0, 3).map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+        {projects.slice(0, 3).map((project, i) => (
+          <ProjectCard key={project.slug} project={project} index={i} />
         ))}
-      </section>
+      </Reveal>
 
-      <section className="home-section">
+      <Reveal className="home-section" delay={0.05}>
         <div className="section-header">
           <h2>Latest Articles</h2>
         </div>
-        {articles.slice(0, 3).map((article) => (
-          <ArticleCard key={article.slug} article={article} />
+        {articles.slice(0, 3).map((article, i) => (
+          <ArticleCard key={article.slug} article={article} index={i} />
         ))}
-      </section>
+      </Reveal>
 
-      <section className="home-section">
+      {/* <Reveal className="home-section" delay={0.1}>
         <div className="section-header">
           <h2>Currently</h2>
         </div>
-        <div className="currently">
-          <p>Completing my B.E. in Electronics and Tele-Communication Engineering at Jadavpur University.</p>
-          <p>On some chapter of Operating System:Three Easy Pieces.</p>
-          <p>Developing robust systems that are highly scalable and work with minimal dependencies.</p>
+        <div className="status-panel">
+          <div className="status-row">
+            <span className="status-label">education</span>
+            <span className="status-value">Completing my B.E. in Electronics and Tele-Communication Engineering at Jadavpur University.</span>
+          </div>
+          <div className="status-row">
+            <span className="status-label">reading</span>
+            <span className="status-value">On some chapter of Operating Systems: Three Easy Pieces.</span>
+          </div>
+          <div className="status-row">
+            <span className="status-label">building</span>
+            <span className="status-value">Developing robust systems that are highly scalable and work with minimal dependencies.</span>
+          </div>
         </div>
-      </section>
+      </Reveal> */}
 
-      <section className="home-section contact-section">
+      <Reveal className="home-section contact-section" delay={0.15}>
         <div className="section-header">
           <h2>Get in Touch</h2>
         </div>
@@ -56,11 +65,11 @@ export default function Home() {
             <a href="mailto:akshat3rya@gmail.com">Email</a>
             <a href="https://github.com/akshat3rya" target="_blank" rel="noreferrer">GitHub</a>
             <a href="https://linkedin.com/in/akshat3rya" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="/Akshat_Arya_resume.pdf"target="_blank"rel="noreferrer">Resume ↗</a>
+            <a href="/Akshat_Arya_resume.pdf" target="_blank" rel="noreferrer">Resume ↗</a>
           </div>
           <p className="copyright">© 2026 Akshat Arya</p>
         </div>
-      </section>
-    </>
+      </Reveal>
+    </div>
   );
 }

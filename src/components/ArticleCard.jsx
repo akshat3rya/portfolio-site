@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
 export default function ArticleCard({
   article,
+  index = 0,
   bordered = false,
 }) {
   return (
@@ -9,13 +11,14 @@ export default function ArticleCard({
       to={`/articles/${article.slug}`}
       className={`article-card ${bordered ? "bordered-card" : ""}`}
     >
-      <div>
-        <h3>{article.title}</h3>
+      <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
 
-        <p>{article.description}</p>
+      <div className="card-body">
+        <h3>{article.title}</h3>
+        <span className="card-date">{article.date}</span>
       </div>
 
-      {/* <span>{article.date}</span> */}
+      <ArrowUpRight className="card-arrow" size={20} />
     </Link>
   );
 }
