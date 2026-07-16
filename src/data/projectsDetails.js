@@ -6,7 +6,8 @@ const projectDetails = [
     subtitle: "A distributed, content-addressable peer-to-peer file storage system featuring stream encryption and custom transport protocols.",
     tech: ["Go", "TCP", "AES-CTR", "MD5", "Gob Encoding"],
     github: "https://github.com/akshat3rya/whack-a-storage",
-    demo: "https://github.com/akshat3rya/whack-a-storage",
+    writeup:"https://akshat3rya.vercel.app/articles/whack-a-storage-architecture",
+    demo: "",
     gallery: [
       "/images/whack-a-storage/architecture.png",
       "/images/whack-a-storage/p2p-mesh.png",
@@ -37,8 +38,9 @@ const projectDetails = [
     year: "2026",
     subtitle: "A modular, cross-platform hardware emulator reproducing the internal mechanics of the Nintendo Entertainment System console.",
     tech: ["C++17", "OpenGL", "PixelGameEngine", "ALSA", "X11"],
-    github: "https://github.com/akshat3rya",
-    demo: "https://github.com/akshat3rya",
+    github: "https://github.com/akshat3rya/vnes",
+    writeup: "https://akshat3rya.vercel.app/articles/vnes-architecture",
+    demo: "",
     gallery: [
       "/images/vnes/emulator-core.png",
       "/images/vnes/ppu-nametable.png",
@@ -69,8 +71,9 @@ const projectDetails = [
     year: "2026",
     subtitle: "A contextual browser extension utilizing predictive Markovian modeling to accelerate user session navigation.",
     tech: ["JavaScript", "Manifest V3", "Python", "Node.js", "Chrome Extension APIs"],
-    github: "https://github.com/akshat3rya",
-    demo: "https://github.com/akshat3rya",
+    github: "https://github.com/akshat3rya/tab-recommender-system",
+    writeup: "https://akshat3rya.vercel.app/articles/markov-tab-recommender-architecture",
+    demo: "",
     gallery: [
       "/images/tab-recommender/extension-overlay.png",
       "/images/tab-recommender/markov-pipeline.png"
@@ -100,8 +103,8 @@ const projectDetails = [
     year: "2025",
     subtitle: "A scalable, highly concurrent C++ surveillance server executing deep learning computer vision analytics on edge environments.",
     tech: ["C++", "Pthreads", "FFmpeg", "Python", "CNNs"],
-    github: "https://github.com/akshat3rya",
-    demo: "https://github.com/akshat3rya",
+    github: "",
+    demo: "",
     gallery: [
       "/images/smartvigil/dashboard.png",
       "/images/smartvigil/pipeline-metrics.png"
@@ -131,8 +134,9 @@ const projectDetails = [
     year: "2025",
     subtitle: "A lightweight, content-addressable command-line version control engine implementing local staging mechanics.",
     tech: ["C++17", "OpenSSL", "C++ Filesystem API"],
-    github: "https://github.com/akshat3rya",
-    demo: "https://github.com/akshat3rya",
+    github: "https://github.com/akshat3rya/wtgit",
+    writeup:"https://akshat3rya.vercel.app/articles/wtgit-architecture",
+    demo: "",
     gallery: [
       "/images/wtgit/cli-status.png",
       "/images/wtgit/object-store.png"
@@ -155,7 +159,46 @@ const projectDetails = [
         content: "To safeguard working directories during destructive tree transformations, WTGit relies on defensive staging checks and file verification wrappers. If updates hit concurrent merge friction, the engine deploys a file-locking system via the `resolve` terminal utility, ensuring index structures remain clean and free from corruption."
       }
     ]
-  }
+  },
+  {
+    slug: "matching-engine",
+    title: "Low-Latency Matching Engine",
+    year: "2026",
+    subtitle: "A high-performance electronic exchange simulator implementing price-time priority, concurrent order processing, and custom binary network protocols.",
+    tech: [
+      "C++17",
+      "TCP Sockets",
+      "Multithreading",
+      "Order Book",
+      "Binary Protocol"
+    ],
+    github: "https://github.com/akshat3rya/orderbook",
+    writeup:"https://akshat3rya.vercel.app/articles/matching-engine-architecture",
+    demo: "",
+    gallery: [
+      "/images/matching-engine/orderbook.png",
+      "/images/matching-engine/architecture.png",
+      "/images/matching-engine/network-flow.png"
+    ],
+    sections: [
+      {
+        title: "Overview",
+        content: "This project is a fully modular electronic trading engine designed to emulate the core architecture of modern financial exchanges. It implements a central limit order book capable of processing market and limit orders while maintaining deterministic price-time priority. The platform combines high-performance data structures with asynchronous networking components to deliver predictable order execution under concurrent workloads."
+      },
+      {
+        title: "Matching Engine & Order Book",
+        content: "At its core lies a dedicated matching engine operating independently from the underlying order book data structure. Incoming buy and sell orders traverse the opposite side of the book, executing trades whenever prices cross according to strict FIFO priority within each price level. The engine supports limit orders, market orders, cancellations, quantity modifications, and partial fills while preserving deterministic execution ordering expected from production-grade exchanges."
+      },
+      {
+        title: "Concurrent Architecture & Networking",
+        content: "The exchange server is built around a multi-threaded event-driven architecture that separates client communication from order execution. Incoming commands are received through custom TCP socket connections, serialized using a compact binary messaging protocol, and forwarded through thread-safe command queues to the centralized matching engine. This separation minimizes contention while ensuring all state mutations occur on a single authoritative execution thread."
+      },
+      {
+        title: "Market Data Distribution & System Design",
+        content: "Beyond trade execution, the engine continuously generates market data by publishing order acknowledgements, executions, book updates, and rejection events through dedicated subscriber channels. The order book exposes structural change listeners that automatically emit price-level updates whenever liquidity changes, allowing downstream consumers to reconstruct the exchange state in real time. The modular design cleanly separates networking, protocol serialization, matching logic, and market data pipelines, making the system extensible for future additions such as persistence, risk controls, authentication, and distributed exchange infrastructure."
+      }
+    ]
+  },
 ];
 
 export default projectDetails;

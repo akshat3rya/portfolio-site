@@ -34,6 +34,13 @@ const projects = [
     description:
       "A content-addressable command-line version control system built in C++17 using OpenSSL SHA-1 snapshots to track repository staging histories.",
   },
+  {
+    slug: "matching-engine",
+    title: "Low-Latency Matching Engine",
+    year: "2026",
+    description:
+      "A high-performance electronic trading engine built in C++17 implementing a central limit order book, price-time priority matching, concurrent order processing, and custom TCP binary protocols.",
+  },
 ];
 
 export default projects;
