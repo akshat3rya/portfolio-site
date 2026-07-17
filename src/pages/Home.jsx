@@ -64,7 +64,7 @@ export default function Home() {
           <div className="contact-links">
             <a href="mailto:akshat3rya@gmail.com">Email</a>
             <a href="https://github.com/akshat3rya" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://linkedin.com/in/akshat3rya" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/akshat-arya-a6ba2227a" target="_blank" rel="noreferrer">LinkedIn</a>
             <a href="/Akshat_Arya_resume.pdf" target="_blank" rel="noreferrer">Resume ↗</a>
           </div>
           <p className="copyright">© 2026 Akshat Arya</p>
